@@ -1,20 +1,11 @@
 import streamlit as st
 import pandas as pd
 import pickle
-import compress_pickle as cp
+import joblib
 
 
-try:
-    import compress_pickle as cp
-except ImportError:
-    st.write("Installing compress-pickle...")
-    st.code("pip install compress-pickle==2.1.0", language="bash")
-    get_ipython().system('pip install compress-pickle==2.1.0')
-    import compress_pickle as cp
 
-# Now load your model
-with open('car_model.pkl.gz', 'rb') as f:
-    model = cp.load(f, compression="gzip")
+model = joblib.load('car_model3.pkl')
 car_name_encoder = pickle.load(open('car_name_encoder.pkl', 'rb'))
 company_encoder = pickle.load(open('company_encoder.pkl', 'rb'))
 fuel_encoder = pickle.load(open('fuel_encoder.pkl', 'rb'))
