@@ -1,11 +1,14 @@
 import streamlit as st
 import pandas as pd
 import pickle
+import compress_pickle as cp
 
 
 # Load the trained model
 
-model = pickle.load(open('car_model.pkl', 'rb'))
+# model = pickle.load(open('car_model.pkl', 'rb'))
+with open('car_model.pkl.gz', 'rb') as f:
+    model = cp.load(f, compression="gzip")
 car_name_encoder = pickle.load(open('car_name_encoder.pkl', 'rb'))
 company_encoder = pickle.load(open('company_encoder.pkl', 'rb'))
 fuel_encoder = pickle.load(open('fuel_encoder.pkl', 'rb'))
