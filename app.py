@@ -4,9 +4,15 @@ import pickle
 import compress_pickle as cp
 
 
-# Load the trained model
+try:
+    import compress_pickle as cp
+except ImportError:
+    st.write("Installing compress-pickle...")
+    st.code("pip install compress-pickle==2.2.0", language="bash")
+    get_ipython().system('pip install compress-pickle==2.2.0')
+    import compress_pickle as cp
 
-# model = pickle.load(open('car_model.pkl', 'rb'))
+# Now load your model
 with open('car_model.pkl.gz', 'rb') as f:
     model = cp.load(f, compression="gzip")
 car_name_encoder = pickle.load(open('car_name_encoder.pkl', 'rb'))
