@@ -8,8 +8,8 @@ try:
     import compress_pickle as cp
 except ImportError:
     st.write("Installing compress-pickle...")
-    st.code("pip install compress-pickle==2.2.0", language="bash")
-    get_ipython().system('pip install compress-pickle==2.2.0')
+    st.code("pip install compress-pickle==2.1.0", language="bash")
+    get_ipython().system('pip install compress-pickle==2.1.0')
     import compress_pickle as cp
 
 # Now load your model
