@@ -1,0 +1,3 @@
+streamlit
+pandas
+compress-pickle==2.1.0
